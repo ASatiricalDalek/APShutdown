@@ -11,4 +11,4 @@ ees_mdf = {
 con = switch_connect.connect_to_switch(ees_mdf["switch_ip"], ees_mdf["pw"])
 ports = switch_connect.get_ports("WiFi_AP", con)
 print(ports)
-# switch_connect.disable_ports(con,ports)
+switch_connect.disable_ports(con,ports)
