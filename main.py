@@ -45,11 +45,6 @@ kes_idf1 = {
 # print(ports)
 # switch_connect.disable_ports(con,ports)
 
-# con = switch_connect.connect_to_switch(pes_idf1["switch_ip"], pes_idf1["pw"])
-# ports = switch_connect.get_ports("WiFi_AP", con)
-# print(ports)
-# switch_connect.disable_ports(con,ports)
-
 # con = switch_connect.connect_to_switch(kes_mdf["switch_ip"], kes_mdf["pw"])
 # ports = switch_connect.get_ports("WiFi_AP", con)
 # print(ports)
@@ -73,11 +68,6 @@ print(ports)
 switch_connect.enable_ports(con,ports)
 
 con = switch_connect.connect_to_switch(pes_mdf["switch_ip"], pes_mdf["pw"])
-ports = switch_connect.get_ports("WiFi_AP", con)
-print(ports)
-switch_connect.enable_ports(con,ports)
-
-con = switch_connect.connect_to_switch(pes_idf1["switch_ip"], pes_idf1["pw"])
 ports = switch_connect.get_ports("WiFi_AP", con)
 print(ports)
 switch_connect.enable_ports(con,ports)
