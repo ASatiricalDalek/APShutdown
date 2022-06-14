@@ -46,5 +46,10 @@ def disable_ports(connection, ports):
         connection.send_config_set(['interface ' +port, 'shutdown'])
     connection.disconnect()
 
+
+def enable_ports(connection, ports):
+    for port in ports:
+        connection.send_config_set(['interface ' +port, 'no shutdown'])
+    connection.disconnect()
     
         
