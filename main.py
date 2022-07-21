@@ -28,6 +28,11 @@ kes_idf1 = {
     "pw" : pw
 }
 
+les_mdf = {
+    "switch_ip" : "10.136.200.230",
+    "pw" : pw
+}
+
 ## Disable ##
 
 # con = switch_connect.connect_to_switch(ees_mdf["switch_ip"], ees_mdf["pw"])
@@ -62,22 +67,34 @@ kes_idf1 = {
 
 ## Enable ##
 
-con = switch_connect.connect_to_switch(ees_idf1["switch_ip"], ees_idf1["pw"])
-ports = switch_connect.get_ports("WiFi_AP", con)
-print(ports)
-switch_connect.enable_ports(con,ports)
+# con = switch_connect.connect_to_switch(ees_mdf["switch_ip"], ees_mdf["pw"])
+# ports = switch_connect.get_ports("WiFi_AP", con)
+# print(ports)
+# switch_connect.enable_ports(con,ports)
 
-con = switch_connect.connect_to_switch(pes_mdf["switch_ip"], pes_mdf["pw"])
-ports = switch_connect.get_ports("WiFi_AP", con)
-print(ports)
-switch_connect.enable_ports(con,ports)
+# con = switch_connect.connect_to_switch(ees_idf1["switch_ip"], ees_idf1["pw"])
+# ports = switch_connect.get_ports("WiFi_AP", con)
+# print(ports)
+# switch_connect.enable_ports(con,ports)
 
-con = switch_connect.connect_to_switch(kes_mdf["switch_ip"], kes_mdf["pw"])
-ports = switch_connect.get_ports("WiFi_AP", con)
-print(ports)
-switch_connect.enable_ports(con,ports)
+# con = switch_connect.connect_to_switch(pes_mdf["switch_ip"], pes_mdf["pw"])
+# ports = switch_connect.get_ports("WiFi_AP", con)
+# print(ports)
+# switch_connect.enable_ports(con,ports)
 
-con = switch_connect.connect_to_switch(kes_idf1["switch_ip"], kes_idf1["pw"])
+# con = switch_connect.connect_to_switch(kes_mdf["switch_ip"], kes_mdf["pw"])
+# ports = switch_connect.get_ports("WiFi_AP", con)
+# print(ports)
+# switch_connect.enable_ports(con,ports)
+
+# con = switch_connect.connect_to_switch(kes_idf1["switch_ip"], kes_idf1["pw"])
+# ports = switch_connect.get_ports("WiFi_AP", con)
+# print(ports)
+# switch_connect.enable_ports(con,ports)
+
+## Configure ##
+
+con = switch_connect.connect_to_switch(les_mdf["switch_ip"], les_mdf["pw"])
 ports = switch_connect.get_ports("WiFi_AP", con)
 print(ports)
-switch_connect.enable_ports(con,ports)
+switch_connect.configure_ports(con,ports)

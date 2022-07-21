@@ -1,4 +1,5 @@
 from netmiko import ConnectHandler
+import time
 
 def connect_to_switch(switch_ip, switch_pw):
     next_switch = {
@@ -51,5 +52,26 @@ def enable_ports(connection, ports):
     for port in ports:
         connection.send_config_set(['interface ' +port, 'no shutdown'])
     connection.disconnect()
+
+def configure_ports(connection, ports):
+    for port in ports:
+        connection.send_config_set(['interface ' +port, 'switchport default'])
+        connection.send_config_set(['interface ' +port, 'description **WiFi_AP**'])
+        connection.send_config_set(['interface ' +port, 'switchport trunk allowed vlan 260-263'])
+        connection.send_config_set(['interface ' +port, 'switchport trunk native vlan 260'])
+        connection.send_config_set(['interface ' +port, 'switchport mode trunk'])
+        connection.send_config_set(['interface ' +port, 'no snmp trap link-status'])
+        connection.send_config_set(['interface ' +port, 'spanning-tree portfast edge'])
+        connection.send_config_set(['interface ' +port, 'spanning-tree bpduguard enable'])
+
+        connection.send_config_set(['interface ' +port, 'shut'])
+
+        time.sleep(10)
+    
+    for port in ports:
+        # Bring the port (and the camera) back up
+        connection.send_config_set(['interface ' + port, 'no shut'])
+    connection.disconnect()
+
     
         
